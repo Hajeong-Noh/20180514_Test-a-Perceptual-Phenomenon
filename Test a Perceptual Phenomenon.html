@@ -11786,8 +11786,8 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Independent variable: The condition of words (Congruent or Incongruent)</li>
-<li>Dependent variable: The taken time to name the ink colors</li>
+<li>Independent variable: The congruency of the color and text</li>
+<li>Dependent variable: The duration to recognize the colors and the texts</li>
 </ul>
 
 </div>
@@ -11807,14 +11807,14 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>\begin{align}
-H_{0} : t_{inc} - t_{con} \leq 0 \\
-H_{1} : t_{inc} - t_{con} &gt; 0 \\
+H_{0} : \mu_{inc} - \mu_{con} \leq 0 \\
+H_{1} : \mu_{inc} - \mu_{con} &gt; 0 \\
 \end{align}</strong></p>
-<p><strong>\begin{align}
-t_{inc} : taken\:time\:to\:name\:the\:ink\:colors\:of\:incongruent\:words \\
-t_{con} : taken\:time\:to\:name\:the\:ink\:colors\:of\:congruent\:words \\
-\end{align}</strong></p>
-<blockquote><p>I want to assume that the naming the ink colors of incongruent words takes more time than naming the ink colors of congruent words if the naming incongruent words proves to take definitely more time at a Type I error rate of 5%. T-test will be performed to find out the statistical significance of the hypothesis.</p>
+<ul>
+<li>Null hypothesis: Naming the ink colors of incongruent words takes same time or less time than naming the ink colors of congruent words</li>
+<li>Alternative hypothesis: Naming the ink colors of incongruent words takes more time than naming the ink colors of congruent words</li>
+</ul>
+<blockquote><p>I want to assume that the naming the ink colors of incongruent words takes more time than naming the ink colors of congruent words if the naming incongruent words proves to take definitely more time at a Type I error rate of 5%. Since I assume that the congruency of the color and the text has an effect on the response time, paired t-test will be performed to find out the statistical significance of the hypothesis.</p>
 </blockquote>
 
 </div>
@@ -11831,7 +11831,7 @@ t_{con} : taken\:time\:to\:name\:the\:ink\:colors\:of\:congruent\:words \\
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[42]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Import necessary packages for the test</span>
@@ -11856,7 +11856,7 @@ t_{con} : taken\:time\:to\:name\:the\:ink\:colors\:of\:congruent\:words \\
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[42]:</div>
+<div class="prompt output_prompt">Out[2]:</div>
 
 
 
@@ -11922,14 +11922,11 @@ t_{con} : taken\:time\:to\:name\:the\:ink\:colors\:of\:congruent\:words \\
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Mean of time of naming Congruent and Incongrent words</span>
-<span class="n">con_mean</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Congruent&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">inc_mean</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Incongruent&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-
-<span class="n">con_mean</span><span class="p">,</span> <span class="n">inc_mean</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Describe the DataFrame</span>
+<span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -11942,50 +11939,77 @@ t_{con} : taken\:time\:to\:name\:the\:ink\:colors\:of\:congruent\:words \\
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[10]:</div>
+<div class="prompt output_prompt">Out[7]:</div>
 
 
 
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<div class="output_text output_subarea output_execute_result">
-<pre>(14.051125000000004, 22.01591666666667)</pre>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Congruent</th>
+      <th>Incongruent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>24.000000</td>
+      <td>24.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>14.051125</td>
+      <td>22.015917</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>3.559358</td>
+      <td>4.797057</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>8.630000</td>
+      <td>15.687000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>11.895250</td>
+      <td>18.716750</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>14.356500</td>
+      <td>21.017500</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>16.200750</td>
+      <td>24.051500</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>22.328000</td>
+      <td>35.255000</td>
+    </tr>
+  </tbody>
+</table>
 </div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Standard deviation of time of naming Congruent and Incongrent words</span>
-<span class="n">con_std</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Congruent&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
-<span class="n">inc_std</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Incongruent&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
-
-<span class="n">con_std</span><span class="p">,</span> <span class="n">inc_std</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[11]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>(3.559357957645195, 4.797057122469138)</pre>
 </div>
 
 </div>
@@ -12005,13 +12029,13 @@ t_{con} : taken\:time\:to\:name\:the\:ink\:colors\:of\:congruent\:words \\
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[41]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Box plot of congruent and incongruent groups</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Congruent&#39;</span><span class="p">,</span> <span class="s1">&#39;Incongruent&#39;</span><span class="p">]);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Response Time (Seconds)&#39;</span><span class="p">);</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Words Type&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Congruency of the color and text&#39;</span><span class="p">);</span>
 </pre></div>
 
 </div>
@@ -12030,7 +12054,7 @@ t_{con} : taken\:time\:to\:name\:the\:ink\:colors\:of\:congruent\:words \\
 
 
 <div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYIAAAEKCAYAAAAfGVI8AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAADl0RVh0U29mdHdhcmUAbWF0cGxvdGxpYiB2ZXJzaW9uIDIuMS4yLCBodHRwOi8vbWF0cGxvdGxpYi5vcmcvNQv5yAAAG+xJREFUeJzt3XucHFWd9/HPlxAIAkpmM0K4DkSU8MSHoIMvfMhyh2VZ5CbCRlHALGFXQViVxRiUsMoucn1c5EGiCBExchOByAIRAhjkYoIhBILyAoOL3CYSScI1ib/njzoDzTjdUzOZ6p7u+r5fr35N1em6/KpT6V+fOqdOKSIwM7PyWqfRAZiZWWM5EZiZlZwTgZlZyTkRmJmVnBOBmVnJORGYmZWcE4GZWck5EZiZlZwTgZlZya3b6ADyGDVqVHR0dDQ6DDOzpjJ//vylEdHe13JNkQg6OjqYN29eo8MwM2sqkp7Os5wvDZmZlZwTgZlZyTkRmJmVnBOBmVnJORGYmZWcE4GZNdzMmTMZN24cw4YNY9y4ccycObPRIZVKYd1HJY0A7gHWT/u5LiLOkHQFsAfwclr02IhYUFQcZja0zZw5k6lTp3LZZZcxYcIE5s6dy6RJkwCYOHFig6MrBxX1qEpJAjaMiJWShgNzgZOBfwZmRcR1ebfV2dkZvo/ArDWNGzeOiy66iL322uutsjlz5nDSSSexaNGiBkbW/CTNj4jOvpYrrEYQWYZZmWaHp5cfkGxm77B48WImTJjwjrIJEyawePHiBkVUPoW2EUgaJmkB8CIwOyIeSG+dJWmhpAslrV9kDGY2tI0dO5a5c+e+o2zu3LmMHTu2QRGVT6GJICLWRMR4YEvgI5LGAVOAHYBdgDbgtN7WlTRZ0jxJ87q6uooM08waaOrUqUyaNIk5c+awatUq5syZw6RJk5g6dWqjQyuNuow1FBF/lnQXcEBEnJeK35B0OfDlKutMB6ZD1kZQjzjNrP66G4RPOukkFi9ezNixYznrrLPcUFxHhdUIJLVL2iRNbwDsCzwuaXQqE3Ao4NYgM7MGKrJGMBqYIWkYWcK5JiJmSbpTUjsgYAFZLyIzKyl3H228wrqPDiZ3HzVrXe4+Wpy83UedCMysoYYNG8brr7/O8OHD3ypbtWoVI0aMYM2aNQ2MrPnlTQQeYsLMGsrdRxvPicDMGsrdRxuvKR5VaWaty91HG89tBGZmLcptBGZmlosTgZlZyTkRmJmVnBOBmVnJORGYmZWcE4GZWck5EZiZlZwTgZlZyTkRmJmVnBOBmVnJORGYmZWcE4GZWck5EZiZlZwTgZlZyTkRmJmVnBOBmVnJORGYmZWcE4GZWck5EZiZlZwTgZlZyTkRmJmVnBOBmVnJORGYmZWcE4GZWckVlggkjZD0oKSHJT0q6cxUvq2kByQ9IelqSesVFYOZmfWtZiKQ9FFJF0taKKlL0h8k3SLp85Le08e23wD2joidgPHAAZJ2Bb4FXBgR2wPLgEmDcSBmZjYwVROBpP8G/gm4DTgAGA3sCJwOjABulHRwtfUjszLNDk+vAPYGrkvlM4BD1/IYzMxsLaxb471PR8TSHmUrgYfS63xJo2ptXNIwYD7wPuBi4EngzxGxOi3yDLBFlXUnA5MBtt566z4Ow8zMBqpqjaA7CUjaUNI6afr9kg6WNLxymRrbWBMR44EtgY8AY3tbrMq60yOiMyI629vb8x2NmZn1W57G4nuAEZK2AO4AjgOu6M9OIuLPwF3ArsAmkrprIlsCz/ZnW2ZmNrjyJAJFxKvA4cBFEXEYWVtB7ZWkdkmbpOkNgH2BxcAc4Ii02DHAjQMJ3MzMBketNoJukvRR4FO83cMnz3qjgRmpnWAd4JqImCXpMeAnkr4J/Aa4bABxm5nZIMnzhX4KMAW4ISIelbQd2a/6miJiIbBzL+VPkbUXmJnZENBnIoiIu4G7K+afAr5QZFBmZlY/VROBpJup0qMHICKq3kNgZmbNo1aN4Lz093BgM+BHaX4isKTAmMzMrI6qJoJ0SQhJ34iI3SveulnSPYVHZmZmdZGn+2h7aiAGskHjAN/hZWbWIvL0GvpX4C5JT6X5DuCEwiIyM7O6ytNr6FZJ2wM7pKLHI+KNYsMyM7N6yVMjAPgwWU1gXWAnSUTEDwuLyszM6qbPRCDpSmAMsABYk4oDcCIwM2sBeWoEncCOEVH1ngIzM2teeXoNLSK7j8DMzFpQnhrBKOAxSQ+SPX4S8J3FZmatIk8imFZ0EGZm1ji5Bp2TtCmwSyp6MCJeLDYsMzOrlz7bCCQdCTwIfAI4EnhA0hG11zIzs2aR59LQVGCX7lqApHbgF8B1RQZmZmb1kafX0Do9LgX9Ked6ZmbWBPLUCG6VdBswM80fBfx3cSGZmVk95WksPlXS4cAEQMD0iLih8MjMzKwu8gwxsS1wS0T8NM1vIKkjIpYUHZyZmRUvz7X+a4G/VMyvSWVmZtYC8iSCdSPize6ZNL1ecSGZmVk95UkEXZLeGk5C0iHA0uJCMrNWJ6nfLytOnl5D/wxcJelisuGnnwE+U2hUZtbSqg1mnJ51UudoLE+voSeBXSVtBCgiVhQflpmZ1UueISY2lXQZcG1ErJC0o6RJdYjNzMzqIE8bwRXAbcDmaf53wClFBWRmZvWVJxGMiohrSF1II2I1bz+y0szMmlyeRPCKpL8hayhG0q7Ay32tJGkrSXMkLZb0qKSTU/k0SX+UtCC9DlyrIzAzs7WSp9fQF4GbgDGS7gXagTzDUK8GvhQRD0naGJgvaXZ678KIOG9AEZuZ2aDK02voIUl7AB8gG2votxGxKsd6zwHPpekVkhYDW6xlvGZmNsiqXhqStIukzeCtdoEPA2cB50tq689OJHUAOwMPpKITJS2U9ANJI6usM1nSPEnzurq6+rM7MzPrh1ptBJcCbwJI2h04G/ghWfvA9Lw7SPcfXA+cEhHLgUuAMcB4shrD+b2tFxHTI6IzIjrb29vz7s7MzPqp1qWhYRHxUpo+imz46euB6yUtyLNxScPJksBV3aOXRsQLFe9/D5g1oMjNzGxQ1KoRDJPUnSj2Ae6seC/P8NUCLgMWR8QFFeWjKxY7DFiUP1wzMxtstb7QZwJ3S1oKvAb8EkDS+8jRfRTYDfg08EhFDeKrwERJ48m6oy4BThhY6GZmNhiqJoKIOEvSHcBo4PZ4eySodYCT+tpwRMwl62XU0y0DCdTMzIpRNRFI2igi7u9ZHhG/67HMyqKCMzOz4tVqI7hR0vmSdpe0YXehpO0kTUoPtD+g+BDNrBm1tbUN6JkD/V2nra1fvdmtF7UuDe2Thn84Adgt9fdfDfwW+DlwTEQ8X58wzazZLFu2rC7PFvBDa9Zezd4/EXELvqZvZtbS8gw6Z2ZmLcyJwMys5JwIzMxKLlcikDRB0nFpul3StsWGZWZm9ZLnmcVnAKcBU1LRcOBHRQZlZmb1k6dGcBhwMPAKQEQ8C2xcZFBmZlY/eRLBm2l4ie5HVW7Yx/JmZtZE8iSCayRdCmwi6XjgF8D3ig3LzMzqJc+jKs+TtB+wnOxxlV+PiNl9rGZmZk0iz8PriYjZkh7oXl5SW8VDa8zMrInlecDMCcC/kz2T4C9kQ0sHsF2xodnaGOj4K/UYG8bMhpY8NYIvA/8rIpYWHYwNnlpf6JL8hW9mb8nTWPwk8GrRgZiZWWPkqRFMAX6V2gje6C6MiC8UFpWZmdVNnkRwKdmD6x8hayMwM7MWkicRrI6ILxYeiZmZNUSeNoI5kiZLGi2prftVeGRmZlYXeWoEn0x/p1SUufuomVmLyHNnsYecNjNrYVUTgaS9I+JOSYf39n5E/LS4sMzMrF5q1Qh2J+st9LFe3gvAicDMqooz3g3T3lOf/dhaqZUIFgJExHF1isXMWojOXF6XO9glEdMK301Lq9Vr6PS6RWFmZg3jh9ebmZVcrUtDO0ha2Eu5gIiI/11rw5K2An4IbEZ2R/L0iPh2ugfhaqADWAIcGRHLBhC7mZkNglqJ4Pf03lCc12rgSxHxkKSNgfmSZgPHAndExNmSvgJ8BThtLfZjZmZroVYieDMinh7ohiPiOeC5NL1C0mJgC+AQYM+02AzgLpwIzMwaplYbwb2DtRNJHcDOwAPApilJdCeL9w7WfszMrP+qJoKIOHEwdiBpI+B64JSIWN6P9SZLmidpXldX12CEYmZmvSi015Ck4WRJ4KqKO5FfkDQ6vT8aeLG3dSNiekR0RkRne3t7kWGamZVaYYlA2UNzLwMWR8QFFW/dBByTpo8BbiwqBjMz61ufiUDSuyR9TdL30vz2kg7Kse3dgE8De0takF4HAmcD+0l6AtgvzZuZWYPkGYb6cmA+8NE0/wxwLTCr1koRMZfsnoPe7JM3QDMzK1aeS0NjIuIcYBVARLxG9S94MzNrMnkSwZuSNiAbcRRJY6h4iL2ZmTW3PJeGzgBuBbaSdBXZtf9jiwzKzMzqJ88TymZLegjYleyS0MkRsbTwyMzMrC7y9BraDXg9In4ObAJ8VdI2hUdmZk1PUuGvkSNHNvowm16eNoJLgFcl7QScCjxNNqqomVlVEdHv10DWe+mllxp8pM0vTyJYHdm/0CHAf0XEt4GNiw3LzMzqJU9j8QpJU4Cjgd0lDQOGFxuWmZnVS54awVFk3UUnRcTzZENJn1toVGZmVjd5eg09D1xQMf8H3EZgZtYy8vQaOlzSE5JelrRc0gpJuYeTNjOzoS1PG8E5wMciYnHRwZiZWf3laSN4wUnAzKx15akRzJN0NfAzKsYYqnjQjJmZNbE8ieDdwKvA/hVlATgRmJm1gDy9ho6rRyBmZtYYeXoNbSnpBkkvSnpB0vWStqxHcGZmVrw8jcWXkz1neHOym8luTmVmZtYC8iSC9oi4PCJWp9cVQHvBcZmZWZ3kSQRLJR0taVh6HQ38qejAzMysPvIkgs8CRwLPp9cRqczMzFpAnl5DfwAOrkMsZmbWAHl6DW0n6WZJXann0I2StqtHcGZmVrw8l4Z+DFwDjCbrOXQtMLPIoCy/tra2fj/aD/r3CMG2trYGH6WZFSnPncWKiCsr5n8k6cSiArL+WbZs2VuP+CtKd/Iws9aUJxHMkfQV4CdkQ0scBfxcUhtARPiBoWZmTSxPIjgq/T2hR/lnyRKD2wvMzJpYnl5D29YjEDMrj1qXG6u9V/Ql0DLL02voE5I2TtOnS/qppJ1zrPeD1MtoUUXZNEl/lLQgvQ5cu/DNrBlFRL9fVpw8vYa+FhErJE0A/g6YAXw3x3pXAAf0Un5hRIxPr1vyh2pmZkXIkwjWpL//AFwSETcC6/W1UkTcA7gh2cxsiMuTCP4o6VKyYSZukbR+zvWqOVHSwnTpaORabMfMzAZBni/0I4HbgAMi4s9AG3DqAPd3CTAGGA88B5xfbUFJkyXNkzSvq6trgLszM7O+9JkIIuJV4EVgQipaDTwxkJ1FxAsRsSYi/gJ8D/hIjWWnR0RnRHS2t3vUazOzouTpNXQGcBowJRUNB340kJ1JGl0xexiwqNqyZmZWH3luKDsM2Bl4CCAinu3uTlqLpJnAnsAoSc8AZwB7ShpPdiPaEv76JjUzM6uzPIngzYgISQEgacM8G46Iib0UX9af4Kxvcca7Ydp7it+HmbWsPIngmtRraBNJx5MNLfH9YsOyvHTm8roMOhfTCt2FmTVQniEmzpO0H7Ac+ADw9YiYXXhkZmZWF3lqBKQv/tkA6bnFn4qIqwqNzMzM6qJqryFJ75Y0RdJ3JO2vzInAU2T3FpiZWQuoVSO4ElgG3Af8E9lNZOsBh0TEgjrEZmZmdVArEWwXER8EkPR9YCmwdUSsqEtkZmZWF7VuKFvVPRERa4DfOwmYmbWeWjWCnSQtT9MCNkjzAiIi3LnczKwFVE0EETGsnoGYmVljrM1w0mZm1gKcCMzMSs6JwMys5JwIzMxKzonAzKzknAjMzErOicDMrOScCMzMSs6JwMys5HI9j8CGNkmFbn/kyJGFbt/MGsuJoMkN5DGVkgp/vKWZNQ9fGjIzKzknAjOzknMiMDMrOScCM7OScyIwMys5JwIzs5JzIjAzKzknAjOzkissEUj6gaQXJS2qKGuTNFvSE+mvb1k1M2uwImsEVwAH9Cj7CnBHRGwP3JHmzcysgQpLBBFxD/BSj+JDgBlpegZwaFH7NzOzfOrdRrBpRDwHkP6+t877NzOzHoZsY7GkyZLmSZrX1dXV6HDMzFpWvRPBC5JGA6S/L1ZbMCKmR0RnRHS2t7fXLUAzs7KpdyK4CTgmTR8D3Fjn/ZuZWQ9Fdh+dCdwHfEDSM5ImAWcD+0l6AtgvzZuZWQMV9mCaiJhY5a19itqnmZn135BtLDYzs/pwIjAzKzknAjOzknMiMDMrOScCM7OSK6zXkDWWpAG9HxFFhGNmQ5gTQYvyF7qZ5eVLQ2ZmJedEYGZWck4EZmYl50RgZlZyTgRmZiXnRGBmVnJOBGZmJedEYGZWcmqGG48kdQFPNzqOFjIKWNroIMx64XNzcG0TEX0+67cpEoENLknzIqKz0XGY9eRzszF8acjMrOScCMzMSs6JoJymNzoAsyp8bjaA2wjMzErONQIzs5JzIhhiJG0m6SeSnpT0mKRbJL2/0XHlIWlPSf+n0XHY4JC0stExFEnSoZJ2bHQcQ4ETwRCi7LFhNwB3RcSYiNgR+CqwaUH7G+wHE+0JOBFYIQo4Xw8FnAhwG8GQImlvYFpE7N6jXMA5wN8DAXwzIq6WtCcwjewGnHHAfODoiAhJBwIXpPceAraLiIMkTQM2BzrSe7cDnRFxYtrXLOC8iLhL0v7AmcD6wJPAcRGxUtISYAbwMWA48AngdeB+YA3QBZwUEb8c7M/I6kfSyojYqI/zbBfg28CGwBvAPsAq4BKgE1gNfDEi5kg6FjgYeBcwBrghIv4t7WsScBrwLPAE8EZEnCjpCuAlYGey83gFsDIizkvrLQIOioglko4GvgCsBzwAfC4i1qSazbeBg4DXgEPS/mcBL6fXxyPiyUH/EJuEawRDS/d/sp4OB8YDOwH7AudKGp3e2xk4heyXzXbAbpJGAJcCfx8RE4CedxZ+GDgkIj5ZLRBJo4DTgX0j4kPAPOCLFYssTeWXAF+OiCXAd4ELI2K8k0DL6e08Ww+4Gjg5IrrPzdeAzwNExAeBicCMdE5Cdh4fBXwQOErSVpI2B74G7ArsB+zQY9/vJzsPv1QtOElj03Z3i4jxZD9IPpXe3hC4P8V4D3B8RPwKuAk4NZ2vpU0C4GcWN4sJwMyIWAO8IOluYBdgOfBgRDwDIGkB2S/9lcBTEfH7tP5MYHLF9m6KiNf62OeuZP/p700Pul8PuK/i/Z+mv/PJEpW1tt7Os5eB5yLi1wARsTy9PwG4KJU9Lulpsi9zgDsi4uW03GPANmTDStwdES+l8msrlge4Np37texD9gPn1+l83QB4Mb33Jtmvf8jO1/36e/CtzolgaHkUOKKXctVY542K6TVk/6a1lgd4pWJ6Ne+sGXb/chMwOyIm9rHf7n1aa6t2nvV2bblR5+uMiJjSy/qr4u1r4D5fe+FLQ0PLncD6ko7vLkjXYJeRVaOHSWoHdgcerLGdx4HtJHWk+aNqLLsEGC9pHUlbAR9J5feTVf/fl+J4V47eSyuAjftYxlrH48Dm6RxF0sapQfce0mWZdM5sDfy2xnYeBPaQNDKt//Eayy4BPpS2/SFg21R+B3CEpPem99okbdNH/D5fEyeCIST9ajkM2C91H32UrJHux8BC4GGyZPFvEfF8je28BnwOuFXSXOAFsmp8b+4Ffg88ApxH1iBHRHQBxwIzJS0kSww9r932dDNwmKQFkv62zwO2phYRb5L9yLhI0sPAbLJf6P8PGCbpEbI2hGMj4o0a2/kj8B9kDby/AB6j+vl6PdCWLk/9C/C7tI3HyNq0bk/n62xgdJVtdPsJcKqk30gak+OQW5Z7DbUoSRulHj4CLgaeiIgLGx2XWW8qztd1ybpQ/yAibmh0XGXhGkHrOj79anoUeA9ZLyKzoWpaOl8XkdVQf9bgeErFNQIzs5JzjcDMrOScCMzMSs6JwMys5JwISqyZRzotiqRPSFosaU6P8g5Jn6yYP1bSd+oUU0caU6dhehuJVNImkj63Ftt8x2dqjeNEUFL1Huk07bMZ7uicRDZY2V49yjuApvjSquPnvAnZ/SoD1UGTfKatzomgvPYiu/X+u90FEbEgIn6pzLmSFkl6RNJR8NbzBu6SdJ2kxyVdlRIKkg5MZXMl/VcaxRRJ0yRNl3Q78MOev6QlzUqjWyJpf0n3SXpI0rWSNkrlSySdmcofkbRDKt9I0uWpbKGkj0uaJOnCiu0fL+mCngcvaWJab5Gkb6Wyr5ON6/RdSef2WOVs4G/TzXL/mso2l3SrpCcknVOx7V6Po8f+3yfpF5IeTsuNqfa591hvRMUx/0bSXqn82LSvm8lGlO253s8kzZf0qKTJFeUrJZ2V4rhf0qapfNt0DL+W9I2e26v4TMakz+TctN6paZ2Fks5MZbuk+RGSNkwxjKvymVojRIRfJXyRDdd7YZX3Pk52Z+YwshrCH8ju0tyT7I7PLcl+RNxH9sU5AvgfYNu0/kxgVpqeRjbQ1wZp/ljgOxX7mpW2O4psaIINU/lpwNfT9BKyYa0h+wX6/TT9LeD/VmxrJNlIk08Cw1PZr4AP9ji+zdMxtZONO3MncGh67y6yYbl7fiZ7dh9TxXE8RXaPxgjgaWCrWsfRY3sPAIel6RFkQzNX+9w7gEVp2S8Bl6fpHdIyI1I8zwBtVf5N29LfDcj66v9Nmg/gY2n6HOD0NH0T8Jk0/XmyoZ97bvOtuNL8/mTPHFY6P2YBu6f3vkl25/rFwJTePlO/GvdyjcB689ZopxHxAtA92imkUSgj4i9A9yiUO/DXo51W6u9opwuAY8hGpuxWOdppR5rel+yLBYCIWBYRr5B9sR+Uag7DI+KRHvvaheySWFdErAauIhu/qb/uiIiXI+J1smERtslxHEjaGNgi0p2zEfF6RLxK7c+92wTgyrTe42QJqLtdZ3akETx78QVlw0DcT5awtk/lPUfm7EjTu/H2v+OVOT4LyBLB/sBvyIYq2aFiP/9ONupnJ1nCsSGkGa7ZWjGqjXQKzTPaabXRL79P1t7xOHB5L+/3FW9e1T6LWsdRa/954qq1zCu9FaZLb/sCH42IVyXdxdufe62ROft7t6mA/4yI3u5ibwM2InuQ0YhqsVpjuEZQXr2OdCppD7JLG80w2untwIkV8Y8EiIgHyH71fpK/rp1AdllmD0mjJA0je3jK3X3sK+9IlX0eR2Tj9j8j6dC0zPqS3kW+z72/I3tCdvlqWUoCO5DVWvpyL/CPafpTVZbp+ZncBny2om1nC6XRQMkuGX2NrPb1rSrrW4M4EZRU+hXY20inz5L1JmqG0U6/CYxMjasPkzWAd7sGuDcilvUS73PAFGBOOsaHIuLGPva1EFidGlWrNmz24zg+TXa5ZiFZO8Zm5Pvc+zWyZ3IrsG7a1zdSTH05Gfi8pF+TJZK/EhF/IrsEtkjSuRFxO9lIufel+K4DNpb0GWB1RPyYrIF4F2WPZc31mVrxPNaQDQoNsdFOlfVaujAi7mhUDGbNwjUCGyxDYrRTZTc5/Q54zUnALB/XCMzMSs41AjOzknMiMDMrOScCM7OScyIwMys5JwIzs5JzIjAzK7n/Dwy/SeBvFC7uAAAAAElFTkSuQmCC
 "
 >
 </div>
@@ -12062,13 +12086,13 @@ t_{con} : taken\:time\:to\:name\:the\:ink\:colors\:of\:congruent\:words \\
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[48]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Perform the t-test</span>
-<span class="n">t</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Congruent&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Incongruent&#39;</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Perform the paired t-test</span>
+<span class="n">t</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">ttest_rel</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Congruent&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Incongruent&#39;</span><span class="p">])</span>
 
-<span class="c1"># divide p-value by 2 because the test_ind function is for two-tailed t-test.</span>
+<span class="c1"># divide p-value by 2 because the test_rel function returns p-value for two-tailed t-test.</span>
 <span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="o">/</span><span class="mi">2</span>
 </pre></div>
 
@@ -12082,13 +12106,13 @@ t_{con} : taken\:time\:to\:name\:the\:ink\:colors\:of\:congruent\:words \\
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[48]:</div>
+<div class="prompt output_prompt">Out[8]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(-6.5322505539032285, 2.2974744811475927e-08)</pre>
+<pre>(-8.020706944109957, 2.051500292855589e-08)</pre>
 </div>
 
 </div>
